@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
     "react-simple-chatbot": "^0.2.1",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "styled-components": "^2.1.1",
+    "underscore": "^1.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
