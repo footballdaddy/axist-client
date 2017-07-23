@@ -11,10 +11,12 @@ const BOT_LOGO = require('./logo.js');
 class AxistBot extends Component {
   constructor(props) {
     super(props);
+
+    this.identifier = new Date().getTime();
     
     this.state = {
       steps: props.steps,
-      response: '...'
+      chat_histories: []
     };
 
     socket.emit('conversation', {
@@ -30,11 +32,23 @@ class AxistBot extends Component {
   }
 
   receiveMessage(receivedMessage) {
-    this.setState(_.extend(this.state, { response: receivedMessage.message.response }));
+    var chatHistories = this.state.chat_histories;
+    chatHistories.push({
+        identifier: this.identifier,
+        response: receivedMessage.message.response
+    });
+
+    this.setState(_.extend(this.state, { chat_histories: chatHistories }));
   }
 
   render() {
-    return (<p> { this.state.response }</p>);
+    var response = _.findWhere(this.state.chat_histories, { identifier : this.identifier });
+    
+    if (_.isUndefined(response)) {
+      return (<p> { '...' }</p>);
+    }
+
+    return (<p> { response.response }</p>);
   }
 }
 
