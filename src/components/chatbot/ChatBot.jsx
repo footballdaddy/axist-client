@@ -91,6 +91,14 @@ class ChatBot extends Component {
     });
   }
 
+  componentWillReceiveProps() {
+    var self = this;
+
+    this.setState({
+      steps: self.props.steps
+    });
+  }
+
   componentDidMount() {
     const chatbotContent = document.querySelector('.rsc-content');
 
@@ -450,6 +458,9 @@ class ChatBot extends Component {
         }
       </Header>
     );
+
+    console.log('chatbot steps ', this.state.steps);
+    console.log('chatbot renderedSteps', this.state.renderedSteps);
 
     return (
       <div className={`rsc ${className}`}>

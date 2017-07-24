@@ -36,8 +36,6 @@ class TextStep extends Component {
     const { component } = step;
     let { message } = step;
 
-    console.log(message);
-
     if (component) {
       const { steps, previousStep, triggerNextStep } = this.props;
       return React.cloneElement(component, {
